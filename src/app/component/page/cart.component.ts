@@ -38,6 +38,20 @@ import { RouterLink } from '@angular/router';
                         }}</span>
                     </div>
                 </div>
+                <div class="flex justify-between">
+                    <div class="font-bold">Discount</div>
+                    <div>
+                        <span>{{
+                            _cartStateService.discount() | currency
+                        }}</span>
+                    </div>
+                </div>
+                <div class="flex justify-between">
+                    <div class="font-bold">Net</div>
+                    <div>
+                        <span>{{ _cartStateService.net() | currency }}</span>
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
 

@@ -35,6 +35,10 @@ export class CartStateService {
         return 0;
     });
 
+    public net = computed(() => {
+        return this.totalPrice() - this.discount();
+    });
+
     public totalItems = computed(() =>
         this.cartItems().reduce((prev: number, curr: ICartItem) => {
             return prev + Number(curr.qty);
