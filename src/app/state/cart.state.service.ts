@@ -15,6 +15,26 @@ export class CartStateService {
         }, 0)
     );
 
+    public totalOfferPrice = computed(() =>
+        this.cartItems().reduce((prev: number, curr: ICartItem) => {
+            if (curr.isOffer) {
+                return prev + Number(curr.price) * Number(curr.qty);
+            }
+            return 0;
+        }, 0)
+    );
+
+    public discount = computed(() => {
+        if (this.totalPrice() > 700) {
+            return 300;
+        }
+
+        if (this.totalOfferPrice() > 500) {
+            return 300;
+        }
+        return 0;
+    });
+
     public totalItems = computed(() =>
         this.cartItems().reduce((prev: number, curr: ICartItem) => {
             return prev + Number(curr.qty);
@@ -40,6 +60,7 @@ export class CartStateService {
                         price: item.price,
                         image: item.image,
                         qty: item.qty,
+                        isOffer: item.isOffer,
                     });
                 });
             });
@@ -61,6 +82,7 @@ export class CartStateService {
                         price: data.price,
                         image: data.image,
                         qty: qty,
+                        isOffer: data.isOffer,
                     });
                 });
             } else {
@@ -87,6 +109,7 @@ export class CartStateService {
                     price: data.price,
                     image: data.image_thumb,
                     qty: qty,
+                    isOffer: data.isOffer,
                 });
             });
         } else {

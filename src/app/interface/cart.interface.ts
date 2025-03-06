@@ -5,6 +5,7 @@ export interface ICartItem {
     price: number;
     image: string | null;
     qty: number;
+    isOffer: boolean;
 }
 
 export interface ICartState {

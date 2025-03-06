@@ -5,6 +5,7 @@ export interface IProduct {
     price: number;
     old_price: number;
     image_thumb: string | null;
+    isOffer: boolean;
 }
 
 export interface IProductDetail {
@@ -14,4 +15,5 @@ export interface IProductDetail {
     price: number;
     old_price: number;
     image_thumb: string | null;
+    isOffer: boolean;
 }

@@ -61,6 +61,7 @@ export class ProductListComponent implements OnInit {
                         price: item.price,
                         old_price: item.old_price,
                         image_thumb: image_thumb,
+                        isOffer: !!parseInt(item.is_offer),
                     });
                 });
             });
