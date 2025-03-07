@@ -91,6 +91,17 @@ import { UserOrderService } from 'src/app/service/user-order.service';
                             </tr>
                             <tr>
                                 <td class="text-left text-green-500">
+                                    <div>Discount</div>
+                                </td>
+                                <td class="text-left text-green-500">
+                                    {{
+                                        userOrder?.user_order.discount
+                                            | currency
+                                    }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left text-green-500">
                                     <div>Total</div>
                                 </td>
                                 <td class="text-left text-green-500">
@@ -180,7 +191,7 @@ export class CheckoutCompleteComponent implements OnInit {
     ngOnInit(): void {
         this._activatedRoute.params.subscribe((val) => {
             this.id = val['num'];
-            this._userOrderService.getUserOrder(this.id).subscribe(
+            this._userOrderService.get(this.id).subscribe(
                 (res) => {
                     if (res.type == 'success') {
                         this.userOrder = res.data;

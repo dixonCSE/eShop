@@ -108,6 +108,26 @@ import { UserStateService } from 'src/app/state/user.state.service';
                                     }}
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="text-left text-green-500">
+                                    <div>Discount</div>
+                                </td>
+                                <td class="text-left text-green-500">
+                                    <span>{{
+                                        _cartStateService.discount() | currency
+                                    }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left text-green-500">
+                                    <div>Net</div>
+                                </td>
+                                <td class="text-left text-green-500">
+                                    <span>{{
+                                        _cartStateService.net() | currency
+                                    }}</span>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </mat-card-content>
@@ -256,10 +276,11 @@ export class CheckoutComponent implements OnInit {
         this.form = this.fb.group({
             username: ['', [Validators.required]],
             email: [this.email],
-            phone: [
-                this.phone,
-                [Validators.required, Validators.pattern('[0][1][0-9]{9}')],
-            ],
+            phone: [this.phone, []],
+            // phone: [
+            //     this.phone,
+            //     [Validators.required, Validators.pattern('[0][1][0-9]{9}')],
+            // ],
             address: ['', [Validators.required]],
             pickPoint: ['', [Validators.required]],
         });

@@ -25,12 +25,12 @@ export class CartStateService {
     );
 
     public discount = computed(() => {
-        if (this.totalPrice() > 700) {
-            return 300;
-        }
+        /* if (this.totalPrice() > 775) {
+            return 75;
+        } */
 
-        if (this.totalOfferPrice() > 500) {
-            return 300;
+        if (this.totalOfferPrice() > 575) {
+            return 75;
         }
         return 0;
     });
