@@ -221,7 +221,8 @@ export class ProductDetailComponent {
             this.productId = val['id'];
             this._productService.getProduct(val['id']).subscribe((res) => {
                 this.product = res;
-                //console.log(res);
+                this.product.product.isOffer = !!parseInt(res.product.is_offer);
+                console.log(res);
             });
         });
     }
@@ -239,6 +240,7 @@ export class ProductDetailComponent {
         this._CartStateService.addCart(this.product.product, this.qty);
 
         // console.log(this._CartStateService.cartItems());
+        console.log(this.product.product);
 
         this._snackBar.open('successfully added ', '', {
             duration: 1.5 * 1000,
@@ -251,6 +253,8 @@ export class ProductDetailComponent {
         this.product.product.image_thumb =
             gData.assetsBaseURL + this.product.product.image_thumb;
         this._CartStateService.addCart(this.product.product, this.qty);
+
+        console.log(this.product.product);
 
         this._router.navigate(['/checkout']);
     }

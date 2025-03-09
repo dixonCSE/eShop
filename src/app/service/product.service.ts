@@ -13,6 +13,7 @@ export class ProductService {
         let api_url: string = gData.apiBaseURL + 'demo_product';
         return this._http.get<any>(api_url).pipe(
             map((data) => {
+                data.isOffer = !!parseInt(data.is_offer);
                 return data;
             })
         );
@@ -60,6 +61,7 @@ export class ProductService {
         let api_url: string = gData.apiBaseURL + 'get_product?id=' + id;
         return this._http.get<any>(api_url).pipe(
             map((data) => {
+                //data.data.isOffer = !!parseInt(data.data.is_offer);
                 return data.data;
             })
         );

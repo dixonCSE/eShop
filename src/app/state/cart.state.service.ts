@@ -86,7 +86,7 @@ export class CartStateService {
                         price: data.price,
                         image: data.image,
                         qty: qty,
-                        isOffer: data.isOffer,
+                        isOffer: !!data.isOffer,
                     });
                 });
             } else {
