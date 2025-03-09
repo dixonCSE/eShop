@@ -27,6 +27,9 @@ export class ProductListComponent implements OnInit {
     @Input()
     key_code!: string;
 
+    @Input()
+    is_page!: boolean;
+
     products: IProduct[] = [];
 
     constructor(private _productService: ProductService) {}
@@ -49,21 +52,42 @@ export class ProductListComponent implements OnInit {
             });
         }); */
 
-        this._productService
-            .getDisplayProducts(this.key_code)
-            .subscribe((data) => {
-                data.products.map((item: any) => {
-                    let image_thumb = gData.assetsBaseURL + item.image_thumb;
-                    this.products.push({
-                        id: item.id,
-                        code: item.code,
-                        name: item.name,
-                        price: item.price,
-                        old_price: item.old_price,
-                        image_thumb: image_thumb,
-                        isOffer: !!parseInt(item.is_offer),
+        if (this.is_page) {
+            this._productService
+                .getAllDisplayProducts(this.key_code)
+                .subscribe((data) => {
+                    data.products.map((item: any) => {
+                        let image_thumb =
+                            gData.assetsBaseURL + item.image_thumb;
+                        this.products.push({
+                            id: item.id,
+                            code: item.code,
+                            name: item.name,
+                            price: item.price,
+                            old_price: item.old_price,
+                            image_thumb: image_thumb,
+                            isOffer: !!parseInt(item.is_offer),
+                        });
                     });
                 });
-            });
+        } else {
+            this._productService
+                .getDisplayProducts(this.key_code)
+                .subscribe((data) => {
+                    data.products.map((item: any) => {
+                        let image_thumb =
+                            gData.assetsBaseURL + item.image_thumb;
+                        this.products.push({
+                            id: item.id,
+                            code: item.code,
+                            name: item.name,
+                            price: item.price,
+                            old_price: item.old_price,
+                            image_thumb: image_thumb,
+                            isOffer: !!parseInt(item.is_offer),
+                        });
+                    });
+                });
+        }
     }
 }

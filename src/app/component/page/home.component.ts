@@ -40,13 +40,20 @@ import { ProductService } from 'src/app/service/product.service';
         </section>
 
         <section *ngFor="let item of displayView">
-            <div class="text-center text-amber-500 font-bold text-2xl my-5  ">
+            <div class="text-left text-amber-500 font-bold text-2xl my-5  ">
                 {{ item.name }}
             </div>
-            <product-list [key_code]="item.key_code"></product-list>
+            <product-list
+                [key_code]="item.key_code"
+                [is_page]="false"
+            ></product-list>
             <div>
                 <div></div>
-                <div>view all</div>
+                <div class="text-left  ">
+                    <a [routerLink]="['/dv', item.id]" routerLinkActive="active"
+                        >view all</a
+                    >
+                </div>
             </div>
         </section>
 

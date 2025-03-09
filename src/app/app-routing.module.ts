@@ -26,6 +26,15 @@ const routes: Routes = [
         pathMatch: 'full',
     },
     {
+        path: 'dv/:id',
+        loadComponent: () =>
+            import('./component/page/dv.component').then(
+                (mod) => mod.DvComponent
+            ),
+        title: 'Detail',
+        pathMatch: 'full',
+    },
+    {
         path: 'privacy-policy',
         loadComponent: () =>
             import('./component/page/privacy-policy.component').then(
