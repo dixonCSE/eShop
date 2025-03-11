@@ -125,13 +125,23 @@ import { BreakpointService } from 'src/app/service/breakpoint.service';
 
                     <div class="flex justify-center mt-2">
                         <button
+                            *ngIf="stock > 0"
                             class="mx-2 bg-addCart"
                             mat-flat-button
                             (click)="addCart()"
                         >
                             Add cart
                         </button>
+
                         <button
+                            *ngIf="stock <= 0"
+                            class="mx-2 bg-addCart"
+                            mat-flat-button
+                        >
+                            stock out
+                        </button>
+                        <button
+                            *ngIf="stock > 0"
                             class="mx-2 bg-buyNow"
                             mat-flat-button
                             (click)="buyNow()"
@@ -205,6 +215,7 @@ export class ProductDetailComponent {
     productId: any = 0;
     product?: any;
     qty: number = 1;
+    stock: number = 0;
     xgData = gData;
     displaySize: number = 4;
     imageStyle: string = 'width: 100%';
@@ -221,6 +232,7 @@ export class ProductDetailComponent {
             this.productId = val['id'];
             this._productService.getProduct(val['id']).subscribe((res) => {
                 this.product = res;
+                this.stock = res.stock;
                 this.product.product.isOffer = !!parseInt(res.product.is_offer);
                 console.log(res);
             });
