@@ -120,6 +120,16 @@ import { UserStateService } from 'src/app/state/user.state.service';
                             </tr>
                             <tr>
                                 <td class="text-left text-green-500">
+                                    <div>Delivary Charge</div>
+                                </td>
+                                <td class="text-left text-green-500">
+                                    <span>{{
+                                        _cartStateService.dcharge() | currency
+                                    }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left text-green-500">
                                     <div>Net</div>
                                 </td>
                                 <td class="text-left text-green-500">

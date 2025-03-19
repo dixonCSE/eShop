@@ -85,6 +85,14 @@ import { ActivatedRoute } from '@angular/router';
                             </tr>
                             <tr>
                                 <td class="text-left text-green-500">
+                                    <div>Delivary Charge</div>
+                                </td>
+                                <td class="text-left text-green-500">
+                                    {{ order?.dcharge | currency }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left text-green-500">
                                     <div>Total</div>
                                 </td>
                                 <td class="text-left text-green-500">

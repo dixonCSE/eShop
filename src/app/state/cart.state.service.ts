@@ -29,14 +29,29 @@ export class CartStateService {
             return 75;
         } */
 
-        if (this.totalOfferPrice() > 575) {
+        if (this.totalOfferPrice() >= 500) {
             return 75;
         }
         return 0;
     });
 
+    public dcharge = computed(() => {
+        /* if (this.totalPrice() > 775) {
+            return 75;
+        } */
+
+        if (this.totalPrice() < 300 && this.totalPrice() > 0) {
+            return 20;
+        }
+
+        if (this.totalPrice() <= 0) {
+            return 0;
+        }
+        return 0;
+    });
+
     public net = computed(() => {
-        return this.totalPrice() - this.discount();
+        return this.totalPrice() - this.discount() + this.dcharge();
     });
 
     public totalItems = computed(() =>

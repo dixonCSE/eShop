@@ -47,6 +47,14 @@ import { RouterLink } from '@angular/router';
                     </div>
                 </div>
                 <div class="flex justify-between">
+                    <div class="font-bold">delivary charge</div>
+                    <div>
+                        <span>{{
+                            _cartStateService.dcharge() | currency
+                        }}</span>
+                    </div>
+                </div>
+                <div class="flex justify-between">
                     <div class="font-bold">Net</div>
                     <div>
                         <span>{{ _cartStateService.net() | currency }}</span>

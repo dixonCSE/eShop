@@ -48,14 +48,23 @@ import { RouterLink } from '@angular/router';
                     <mat-card-actions
                         class="flex justify-between w-full bottom-0 opacity-50 absolute hover:opacity-100"
                     >
-                        <button
+                        <!-- <button
                             mat-flat-button
                             color="primary"
                             (click)="addCart()"
                         >
                             <mat-icon>add</mat-icon>
                             <mat-icon>shopping_cart</mat-icon>
-                        </button>
+                        </button> -->
+                        <a
+                            mat-flat-button
+                            color="primary"
+                            href="/product/{{ product.id }}"
+                            [routerLink]="['/product', product.id]"
+                        >
+                            <mat-icon>add</mat-icon>
+                            <mat-icon>shopping_cart</mat-icon>
+                        </a>
                         <button mat-mini-fab color="warn" class="w-9 h-9">
                             <mat-icon class="text-base">share</mat-icon>
                         </button>
