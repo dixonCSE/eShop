@@ -18,12 +18,7 @@ import { UserStateService } from 'src/app/state/user.state.service';
 @Component({
     selector: 'checkout-component',
     standalone: true,
-    imports: [
-        CommonModule,
-        MaterialModule,
-        CartItemComponent,
-        ReactiveFormsModule,
-    ],
+    imports: [CommonModule, MaterialModule, ReactiveFormsModule],
     styles: [],
     template: `
         <style>
